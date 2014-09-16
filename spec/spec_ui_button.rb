@@ -85,5 +85,29 @@ class SpecUIButton < Minitest::Spec
         $args.first.must_equal(:finland)
       end
     end
+
+    describe 'UIButton.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UIButton.accessibility_label
+        $uiquery.must_equal("#{UIButton.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UIButton.label
+        $uiquery.must_equal("#{UIButton.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UIButton.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UIButton.accessibility_identifier
+        $uiquery.must_equal("#{UIButton.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UIButton.identifier
+        $uiquery.must_equal("#{UIButton.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

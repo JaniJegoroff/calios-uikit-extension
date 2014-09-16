@@ -91,5 +91,29 @@ class SpecUITableViewCell < Minitest::Spec
         $uiquery.must_equal("#{UITableViewCell.class_name} marked:'myId'")
       end
     end
+
+    describe 'UITableViewCell.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UITableViewCell.accessibility_label
+        $uiquery.must_equal("#{UITableViewCell.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UITableViewCell.label
+        $uiquery.must_equal("#{UITableViewCell.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UITableViewCell.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UITableViewCell.accessibility_identifier
+        $uiquery.must_equal("#{UITableViewCell.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UITableViewCell.identifier
+        $uiquery.must_equal("#{UITableViewCell.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

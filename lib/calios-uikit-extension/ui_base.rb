@@ -39,6 +39,18 @@ class UIBase
 
     alias_method :f, :flash
 
+    def accessibility_label
+      self.property(:accessibilityLabel)
+    end
+
+    alias_method :label, :accessibility_label
+
+    def accessibility_identifier
+      self.property(:accessibilityIdentifier)
+    end
+
+    alias_method :identifier, :accessibility_identifier
+
     def help
       public_methods(false)
     end

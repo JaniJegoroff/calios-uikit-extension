@@ -89,5 +89,29 @@ class SpecUISwitch < Minitest::Spec
         $args.first.must_equal(:oulu)
       end
     end
+
+    describe 'UISwitch.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UISwitch.accessibility_label
+        $uiquery.must_equal("#{UISwitch.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UISwitch.label
+        $uiquery.must_equal("#{UISwitch.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UISwitch.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UISwitch.accessibility_identifier
+        $uiquery.must_equal("#{UISwitch.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UISwitch.identifier
+        $uiquery.must_equal("#{UISwitch.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

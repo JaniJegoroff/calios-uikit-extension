@@ -85,5 +85,29 @@ class SpecUITextField < Minitest::Spec
         $args.first.must_equal(:saimi)
       end
     end
+
+    describe 'UITextField.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UITextField.accessibility_label
+        $uiquery.must_equal("#{UITextField.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UITextField.label
+        $uiquery.must_equal("#{UITextField.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UITextField.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UITextField.accessibility_identifier
+        $uiquery.must_equal("#{UITextField.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UITextField.identifier
+        $uiquery.must_equal("#{UITextField.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

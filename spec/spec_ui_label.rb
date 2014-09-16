@@ -85,5 +85,29 @@ class SpecUILabel < Minitest::Spec
         $args.first.must_equal(:kuopio)
       end
     end
+
+    describe 'UILabel.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UILabel.accessibility_label
+        $uiquery.must_equal("#{UILabel.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UILabel.label
+        $uiquery.must_equal("#{UILabel.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UILabel.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UILabel.accessibility_identifier
+        $uiquery.must_equal("#{UILabel.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UILabel.identifier
+        $uiquery.must_equal("#{UILabel.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

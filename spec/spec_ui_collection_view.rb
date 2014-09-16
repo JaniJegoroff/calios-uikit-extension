@@ -129,5 +129,29 @@ class SpecUICollectionView < Minitest::Spec
         $args.first.must_equal(:myParam)
       end
     end
+
+    describe 'UICollectionView.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UICollectionView.accessibility_label
+        $uiquery.must_equal("#{UICollectionView.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UICollectionView.label
+        $uiquery.must_equal("#{UICollectionView.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UICollectionView.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UICollectionView.accessibility_identifier
+        $uiquery.must_equal("#{UICollectionView.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UICollectionView.identifier
+        $uiquery.must_equal("#{UICollectionView.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

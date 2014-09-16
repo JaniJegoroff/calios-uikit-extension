@@ -89,5 +89,29 @@ class SpecUICollectionViewCell < Minitest::Spec
         $args.first.must_equal(:varkaus)
       end
     end
+
+    describe 'UICollectionViewCell.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UICollectionViewCell.accessibility_label
+        $uiquery.must_equal("#{UICollectionViewCell.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UICollectionViewCell.label
+        $uiquery.must_equal("#{UICollectionViewCell.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UICollectionViewCell.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UICollectionViewCell.accessibility_identifier
+        $uiquery.must_equal("#{UICollectionViewCell.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UICollectionViewCell.identifier
+        $uiquery.must_equal("#{UICollectionViewCell.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end

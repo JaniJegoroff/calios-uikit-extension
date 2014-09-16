@@ -79,5 +79,29 @@ class SpecUITableView < Minitest::Spec
         $args.first.must_equal(:salmiakki)
       end
     end
+
+    describe 'UITableView.accessibility_label and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UITableView.accessibility_label
+        $uiquery.must_equal("#{UITableView.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+
+        UITableView.label
+        $uiquery.must_equal("#{UITableView.class_name}")
+        $args.first.must_equal(:accessibilityLabel)
+      end
+    end
+
+    describe 'UITableView.accessibility_identifier and aliases' do
+      it 'should call Calabash query method with correct parameters' do
+        UITableView.accessibility_identifier
+        $uiquery.must_equal("#{UITableView.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+
+        UITableView.identifier
+        $uiquery.must_equal("#{UITableView.class_name}")
+        $args.first.must_equal(:accessibilityIdentifier)
+      end
+    end
   end
 end
