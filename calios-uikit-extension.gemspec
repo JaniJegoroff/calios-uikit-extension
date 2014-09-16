@@ -1,7 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name          = 'calios-uikit-extension'
-  gem.version       = '0.0.1'
-  gem.date          = '2014-09-15'
+  gem.version       = '0.0.2'
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ['Jani Jegoroff']
   gem.email         = ['jani.jegoroff@gmail.com']
