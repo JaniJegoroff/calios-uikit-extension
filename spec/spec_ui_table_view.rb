@@ -103,5 +103,23 @@ class SpecUITableView < Minitest::Spec
         $args.first.must_equal(:accessibilityIdentifier)
       end
     end
+
+    describe 'UITableView.enabled?' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = [true, false]
+
+        UITableView.enabled?.must_equal(true)
+        $uiquery.must_equal("#{UITableView.class_name}")
+        $args.first.must_equal(:isEnabled)
+
+        UITableView.enabled?(0).must_equal(true)
+        $uiquery.must_equal("#{UITableView.class_name} index:0")
+        $args.first.must_equal(:isEnabled)
+
+        UITableView.enabled?('myId').must_equal(true)
+        $uiquery.must_equal("#{UITableView.class_name} marked:'myId'")
+        $args.first.must_equal(:isEnabled)
+      end
+    end
   end
 end

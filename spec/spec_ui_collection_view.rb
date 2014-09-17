@@ -153,5 +153,23 @@ class SpecUICollectionView < Minitest::Spec
         $args.first.must_equal(:accessibilityIdentifier)
       end
     end
+
+    describe 'UICollectionView.enabled?' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = [true, false]
+
+        UICollectionView.enabled?.must_equal(true)
+        $uiquery.must_equal("#{UICollectionView.class_name}")
+        $args.first.must_equal(:isEnabled)
+
+        UICollectionView.enabled?(0).must_equal(true)
+        $uiquery.must_equal("#{UICollectionView.class_name} index:0")
+        $args.first.must_equal(:isEnabled)
+
+        UICollectionView.enabled?('myId').must_equal(true)
+        $uiquery.must_equal("#{UICollectionView.class_name} marked:'myId'")
+        $args.first.must_equal(:isEnabled)
+      end
+    end
   end
 end

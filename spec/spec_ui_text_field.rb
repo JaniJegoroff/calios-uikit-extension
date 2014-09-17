@@ -109,5 +109,23 @@ class SpecUITextField < Minitest::Spec
         $args.first.must_equal(:accessibilityIdentifier)
       end
     end
+
+    describe 'UITextField.enabled?' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = [true, false]
+
+        UITextField.enabled?.must_equal(true)
+        $uiquery.must_equal("#{UITextField.class_name}")
+        $args.first.must_equal(:isEnabled)
+
+        UITextField.enabled?(0).must_equal(true)
+        $uiquery.must_equal("#{UITextField.class_name} index:0")
+        $args.first.must_equal(:isEnabled)
+
+        UITextField.enabled?('myId').must_equal(true)
+        $uiquery.must_equal("#{UITextField.class_name} marked:'myId'")
+        $args.first.must_equal(:isEnabled)
+      end
+    end
   end
 end

@@ -91,5 +91,23 @@ class SpecUIView < Minitest::Spec
         $args.first.must_equal(:accessibilityIdentifier)
       end
     end
+
+    describe 'UIView.enabled?' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = [true, false]
+
+        UIView.enabled?.must_equal(true)
+        $uiquery.must_equal("#{UIView.class_name}")
+        $args.first.must_equal(:isEnabled)
+
+        UIView.enabled?(0).must_equal(true)
+        $uiquery.must_equal("#{UIView.class_name} index:0")
+        $args.first.must_equal(:isEnabled)
+
+        UIView.enabled?('myId').must_equal(true)
+        $uiquery.must_equal("#{UIView.class_name} marked:'myId'")
+        $args.first.must_equal(:isEnabled)
+      end
+    end
   end
 end

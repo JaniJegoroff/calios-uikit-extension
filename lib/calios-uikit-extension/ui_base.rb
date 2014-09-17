@@ -6,6 +6,18 @@ class UIBase
       name
     end
 
+    def property(*aParams)
+      Calabash::Cucumber::Core.query(self.class_name, *aParams)
+    end
+
+    alias_method :prop, :property
+    alias_method :p, :property
+
+    def enabled?(aIdOrIndex=nil)
+      q = self.parse_query(aIdOrIndex)
+      Calabash::Cucumber::Core.query(q, :isEnabled).first.to_boolean
+    end
+
     def touch(aIdOrIndex=nil)
       q = self.parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.touch(q)
@@ -17,13 +29,6 @@ class UIBase
       q = self.parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.double_tap(q)
     end
-
-    def property(*aParams)
-      Calabash::Cucumber::Core.query(self.class_name, *aParams)
-    end
-
-    alias_method :prop, :property
-    alias_method :p, :property
 
     def query(aIdOrIndex=nil)
       q = parse_query(aIdOrIndex)
