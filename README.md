@@ -25,6 +25,8 @@ Currently small subset of UIKit elements are supported. Supported UIKit elements
 `UICollectionView`
 `UICollectionViewCell`
 `UILabel`
+`UISearchBar`
+`UISegmentedControl`
 `UISwitch`
 `UITableView`
 `UITableViewCell`
