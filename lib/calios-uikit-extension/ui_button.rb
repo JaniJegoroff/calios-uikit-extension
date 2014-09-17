@@ -8,5 +8,10 @@ class UIButton < UIBase
     end
 
     alias_method :tap, :touch
+
+    def selected?(aIdOrIndex=nil)
+      q = self.parse_query(aIdOrIndex)
+      Calabash::Cucumber::Core.query(q, :isSelected).first.to_boolean
+    end
   end
 end

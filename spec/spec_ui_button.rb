@@ -35,6 +35,28 @@ class SpecUIButton < Minitest::Spec
       end
     end
 
+    describe 'UIButton.selected?' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = [false, true]
+        ret = UIButton.selected?
+        ret.must_equal(false)
+        $uiquery.must_equal("#{UIButton.class_name}")
+        $args.first.must_equal(:isSelected)
+
+        $stub_query_response = [false, true]
+        ret = UIButton.selected?(0)
+        ret.must_equal(false)
+        $uiquery.must_equal("#{UIButton.class_name} index:0")
+        $args.first.must_equal(:isSelected)
+
+        $stub_query_response = [true, false]
+        ret = UIButton.selected?('myId')
+        ret.must_equal(true)
+        $uiquery.must_equal("#{UIButton.class_name} marked:'myId'")
+        $args.first.must_equal(:isSelected)
+      end
+    end
+
     describe 'UIButton.touch and aliases' do
       it 'should call Calabash touch method with correct parameters' do
         UIButton.touch
