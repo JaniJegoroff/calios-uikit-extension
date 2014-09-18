@@ -5,6 +5,8 @@ Calabash-ios UIKit extension provides convenient metaclasses for Calabash usage.
 
 You can utilise these classes in `calabash-ios console` as well as in your test automation code.
 
+See similar extension for Calabash-android: [calandroid-widget-extension](https://github.com/JaniJegoroff/calandroid-widget-extension)
+
 Installation
 ==========
 
@@ -16,7 +18,7 @@ Install gem manually:
 
 `$ gem install calios-uikit-extension`
 
-Currently supported UIKit elements
+Supported UIKit elements
 ==========
 
 Currently small subset of UIKit elements are supported. Supported UIKit elements are:
