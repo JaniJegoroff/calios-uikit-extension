@@ -1,6 +1,8 @@
+require_relative 'lib/calios-uikit-extension/version'
+
 Gem::Specification.new do |gem|
   gem.name          = 'calios-uikit-extension'
-  gem.version       = '0.0.6'
+  gem.version       = CaliosUIKitExtension::VERSION
   gem.platform      = Gem::Platform::RUBY
   gem.authors       = ['Jani Jegoroff']
   gem.email         = ['jani.jegoroff@gmail.com']

@@ -2,6 +2,8 @@ require 'calabash-cucumber/core'
 
 require 'to_boolean'
 
+require 'calios-uikit-extension/version'
+
 require 'calios-uikit-extension/ui_base'
 require 'calios-uikit-extension/ui_button'
 require 'calios-uikit-extension/ui_collection_view'
