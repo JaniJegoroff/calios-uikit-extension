@@ -114,7 +114,7 @@ class SpecUIBase < Minitest::Spec
       end
     end
 
-    describe 'UIBase.raise_if_invalid' do
+    describe 'UIBase.fail_if_invalid' do
       it 'should raise' do
         proc { UIButton.text(:symbol) }.must_raise(RuntimeError)
         proc { UIButton.touch(:symbol) }.must_raise(RuntimeError)

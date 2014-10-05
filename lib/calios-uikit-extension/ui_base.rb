@@ -1,5 +1,10 @@
+# rubocop:disable Metrics/LineLength
+
 include Calabash::Cucumber::Core
 
+#
+# Base class for UIKit elements
+#
 class UIBase
   class << self
     def class_name
@@ -7,37 +12,37 @@ class UIBase
     end
 
     def property(*aParams)
-      Calabash::Cucumber::Core.query(self.class_name, *aParams)
+      Calabash::Cucumber::Core.query(class_name, *aParams)
     end
 
     alias_method :prop, :property
     alias_method :p, :property
 
-    def enabled?(aIdOrIndex=nil)
-      q = self.parse_query(aIdOrIndex)
+    def enabled?(aIdOrIndex = nil)
+      q = parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.query(q, :isEnabled).first.to_boolean
     end
 
-    def touch(aIdOrIndex=nil)
-      q = self.parse_query(aIdOrIndex)
+    def touch(aIdOrIndex = nil)
+      q = parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.touch(q)
     end
 
     alias_method :tap, :touch
 
-    def double_tap(aIdOrIndex=nil)
-      q = self.parse_query(aIdOrIndex)
+    def double_tap(aIdOrIndex = nil)
+      q = parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.double_tap(q)
     end
 
-    def query(aIdOrIndex=nil)
+    def query(aIdOrIndex = nil)
       q = parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.query(q)
     end
 
     alias_method :q, :query
 
-    def flash(aIdOrIndex=nil)
+    def flash(aIdOrIndex = nil)
       q = parse_query(aIdOrIndex)
       Calabash::Cucumber::Core.flash(q)
     end
@@ -45,13 +50,13 @@ class UIBase
     alias_method :f, :flash
 
     def accessibility_label
-      self.property(:accessibilityLabel)
+      property(:accessibilityLabel)
     end
 
     alias_method :label, :accessibility_label
 
     def accessibility_identifier
-      self.property(:accessibilityIdentifier)
+      property(:accessibilityIdentifier)
     end
 
     alias_method :identifier, :accessibility_identifier
@@ -63,21 +68,21 @@ class UIBase
     alias_method :h, :help
 
     def parse_query(aIdOrIndex)
-      raise_if_invalid(aIdOrIndex)
+      fail_if_invalid(aIdOrIndex)
 
       if aIdOrIndex.nil?
-        qStr = "#{self.class_name}"
+        q = "#{class_name}"
       else
-        qStr = aIdOrIndex.is_a?(String) ? "#{self.class_name} marked:'#{aIdOrIndex}'" : "#{self.class_name} index:#{aIdOrIndex}"
+        q = aIdOrIndex.is_a?(String) ? "#{class_name} marked:'#{aIdOrIndex}'" : "#{class_name} index:#{aIdOrIndex}"
       end
 
-      qStr
+      q
     end
 
     private
 
-    def raise_if_invalid(aParam)
-      raise('invalid parameter') unless aParam.nil? || aParam.is_a?(String) || aParam.is_a?(Integer)
+    def fail_if_invalid(aParam)
+      Kernel.fail('invalid parameter') unless aParam.nil? || aParam.is_a?(String) || aParam.is_a?(Integer)
     end
   end
 end
