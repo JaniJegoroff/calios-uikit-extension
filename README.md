@@ -1,3 +1,6 @@
+[![Gem Version](https://badge.fury.io/rb/calios-uikit-extension.svg)](http://badge.fury.io/rb/calios-uikit-extension)
+[![Dependency Status](https://gemnasium.com/JaniJegoroff/calios-uikit-extension.svg)](https://gemnasium.com/JaniJegoroff/calios-uikit-extension)
+
 calios-uikit-extension
 ==========
 
