@@ -1,4 +1,3 @@
-# rubocop:disable Metrics/LineLength
 # rubocop:disable Style/SpaceAfterColon
 # rubocop:disable Style/BracesAroundHashParameters
 

@@ -1,5 +1,3 @@
-# rubocop:disable Metrics/LineLength
-
 include Calabash::Cucumber::Core
 
 #
