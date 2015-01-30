@@ -39,6 +39,7 @@ Currently small subset of UIKit elements are supported. Supported UIKit elements
 `UITableViewCell`
 `UITextField`
 `UIView`
+`UIWebView`
 
 Example use cases
 ==========
