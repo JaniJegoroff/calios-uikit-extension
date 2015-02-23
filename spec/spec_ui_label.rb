@@ -1,5 +1,8 @@
+# rubocop:disable Style/GlobalVars
+
 require_relative 'spec_helper'
 
+# Test class for UILabel
 class SpecUILabel < Minitest::Spec
   before do
     $uiquery = nil

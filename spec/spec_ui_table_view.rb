@@ -1,5 +1,8 @@
+# rubocop:disable Style/GlobalVars
+
 require_relative 'spec_helper'
 
+# Test class for UITableView
 class SpecUITableView < Minitest::Spec
   before do
     $uiquery = nil

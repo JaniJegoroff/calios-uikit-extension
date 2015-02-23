@@ -1,5 +1,8 @@
+# rubocop:disable Style/GlobalVars
+
 require_relative 'spec_helper'
 
+# Test class for UIButton
 class SpecUIButton < Minitest::Spec
   before do
     $uiquery = nil

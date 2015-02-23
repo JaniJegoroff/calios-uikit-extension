@@ -1,9 +1,9 @@
 require_relative 'spec_helper'
 
+# Test class for UIView
 class SpecUIView < Minitest::Spec
   before do
-    $uiquery = nil
-    $args = nil
+    # nop
   end
 
   after do

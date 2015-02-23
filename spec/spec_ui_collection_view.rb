@@ -1,5 +1,12 @@
+# rubocop:disable Style/GlobalVars
+# rubocop:disable Style/BracesAroundHashParameters
+# rubocop:disable Style/SpaceInsideHashLiteralBraces
+# rubocop:disable Style/HashSyntax
+# rubocop:disable Style/SpaceAroundOperators
+
 require_relative 'spec_helper'
 
+# Test class for UICollectionView
 class SpecUICollectionView < Minitest::Spec
   before do
     $uiquery = nil
@@ -42,7 +49,7 @@ class SpecUICollectionView < Minitest::Spec
           UICollectionView.scroll_to_item(item, section, direction)
           $item.must_equal(item)
           $section.must_equal(section)
-          $opts.has_key?(key).must_equal(true)
+          $opts.key?(key).must_equal(true)
           $opts[key].must_equal(direction)
         end
       end

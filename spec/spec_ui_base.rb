@@ -1,5 +1,9 @@
+# rubocop:disable Style/GlobalVars
+# rubocop:disable Metrics/ClassLength
+
 require_relative 'spec_helper'
 
+# Test class for UIBase
 class SpecUIBase < Minitest::Spec
   before do
     $uiquery = nil
@@ -11,8 +15,8 @@ class SpecUIBase < Minitest::Spec
   end
 
   describe 'UIBase' do
-    classes = [UIButton, UICollectionView, UICollectionViewCell, UIKeyboardAutomatic, UILabel, UINavigationBar, UISearchBar,
-               UISegmentedControl, UISwitch, UITableView, UITableViewCell, UITextField, UIView, UIWebView]
+    classes = [UIButton, UICollectionView, UICollectionViewCell, UIKeyboardAutomatic, UILabel, UINavigationBar,
+               UISearchBar, UISegmentedControl, UISwitch, UITableView, UITableViewCell, UITextField, UIView, UIWebView]
     classes.each do |klass|
       describe "#{klass}.class_name" do
         it 'should return class name' do
