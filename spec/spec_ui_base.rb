@@ -116,6 +116,57 @@ class SpecUIBase < Minitest::Spec
           $args.first.must_equal(:isEnabled)
         end
       end
+
+      describe "#{klass}.help" do
+        it 'should return public methods' do
+          klass.help.must_be_kind_of(Array)
+          klass.h.must_be_kind_of(Array)
+
+          klass.help.must_include(:help)
+          klass.h.must_include(:h)
+
+          klass.help.must_equal(klass.public_methods(false))
+          klass.h.must_equal(klass.public_methods(false))
+        end
+      end
+
+      describe "#{klass}.query and aliases" do
+        it 'should call Calabash query method with correct parameters' do
+          klass.query
+          $uiquery.must_equal("#{klass.class_name}")
+          klass.q
+          $uiquery.must_equal("#{klass.class_name}")
+
+          klass.query(1)
+          $uiquery.must_equal("#{klass.class_name} index:1")
+          klass.q(2)
+          $uiquery.must_equal("#{klass.class_name} index:2")
+
+          klass.query('myId')
+          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          klass.q('myId')
+          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+        end
+      end
+
+      describe "#{klass}.flash and aliases" do
+        it 'should call Calabash flash method with correct parameters' do
+          klass.flash
+          $uiquery.must_equal("#{klass.class_name}")
+          klass.f
+          $uiquery.must_equal("#{klass.class_name}")
+
+          klass.flash(1)
+          $uiquery.must_equal("#{klass.class_name} index:1")
+          klass.f(2)
+          $uiquery.must_equal("#{klass.class_name} index:2")
+
+          klass.flash('myId')
+          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          klass.f('myId')
+          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+        end
+      end
     end
 
     describe 'UIBase.fail_if_invalid' do
