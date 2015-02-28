@@ -35,5 +35,15 @@ class SpecUICollectionViewCell < Minitest::Spec
         $args.first.must_equal(:isSelected)
       end
     end
+
+    describe 'UICollectionViewCell.count' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = %w(aaa bbb ccc)
+        UICollectionViewCell.count.must_equal(3)
+
+        $stub_query_response = %w(aaa)
+        UICollectionViewCell.count.must_equal(1)
+      end
+    end
   end
 end
