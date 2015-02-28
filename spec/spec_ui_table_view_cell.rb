@@ -53,5 +53,15 @@ class SpecUITableViewCell < Minitest::Spec
         $args.first.must_equal(:text)
       end
     end
+
+    describe 'UITableViewCell.count' do
+      it 'should call Calabash query method with correct parameters' do
+        $stub_query_response = %w(aaa bbb ccc)
+        UITableViewCell.count.must_equal(3)
+
+        $stub_query_response = %w(aaa)
+        UITableViewCell.count.must_equal(1)
+      end
+    end
   end
 end
