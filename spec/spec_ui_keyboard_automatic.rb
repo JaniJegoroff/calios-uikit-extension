@@ -6,10 +6,6 @@ class SpecUIKeyboardAutomatic < Minitest::Spec
     # nop
   end
 
-  after do
-    # nop
-  end
-
   describe 'UIKeyboardAutomatic' do
     # Nothing here yet
   end

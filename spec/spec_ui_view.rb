@@ -6,10 +6,6 @@ class SpecUIView < Minitest::Spec
     # nop
   end
 
-  after do
-    # nop
-  end
-
   describe 'UIView' do
     # Nothing here yet
   end

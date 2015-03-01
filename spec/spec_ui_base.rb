@@ -1,4 +1,3 @@
-# rubocop:disable Style/GlobalVars
 # rubocop:disable Metrics/ClassLength
 
 require_relative 'spec_helper'
@@ -6,12 +5,7 @@ require_relative 'spec_helper'
 # Test class for UIBase
 class SpecUIBase < Minitest::Spec
   before do
-    $uiquery = nil
-    $args = nil
-  end
-
-  after do
-    # nop
+    @core = Calabash::Cucumber::Core
   end
 
   describe 'UIBase' do
@@ -27,93 +21,93 @@ class SpecUIBase < Minitest::Spec
       describe "#{klass}.touch and aliases" do
         it 'should call Calabash touch method with correct parameters' do
           klass.touch
-          $uiquery.must_equal("#{klass.class_name}")
+          @core.ui_query.must_equal("#{klass.class_name}")
 
           klass.touch(0)
-          $uiquery.must_equal("#{klass.class_name} index:0")
+          @core.ui_query.must_equal("#{klass.class_name} index:0")
 
           klass.touch('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
 
           klass.tap
-          $uiquery.must_equal("#{klass.class_name}")
+          @core.ui_query.must_equal("#{klass.class_name}")
 
           klass.tap(0)
-          $uiquery.must_equal("#{klass.class_name} index:0")
+          @core.ui_query.must_equal("#{klass.class_name} index:0")
 
           klass.tap('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
         end
       end
 
       describe "#{klass}.double_tap" do
         it 'should call Calabash double_tap method with correct parameters' do
           klass.double_tap
-          $uiquery.must_equal(klass.class_name)
+          @core.ui_query.must_equal(klass.class_name)
 
           klass.double_tap(0)
-          $uiquery.must_equal("#{klass.class_name} index:0")
+          @core.ui_query.must_equal("#{klass.class_name} index:0")
 
           klass.double_tap('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
         end
       end
 
       describe "#{klass}.property and aliases" do
         it 'should call Calabash query method with correct parameters' do
           klass.property(:finland)
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:finland)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:finland)
 
           klass.prop(:finland)
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:finland)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:finland)
 
           klass.p(:finland)
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:finland)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:finland)
         end
       end
 
       describe "#{klass}.accessibility_label and aliases" do
         it 'should call Calabash query method with correct parameters' do
           klass.accessibility_label
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:accessibilityLabel)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:accessibilityLabel)
 
           klass.label
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:accessibilityLabel)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:accessibilityLabel)
         end
       end
 
       describe "#{klass}.accessibility_identifier and aliases" do
         it 'should call Calabash query method with correct parameters' do
           klass.accessibility_identifier
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:accessibilityIdentifier)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:accessibilityIdentifier)
 
           klass.identifier
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:accessibilityIdentifier)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:accessibilityIdentifier)
         end
       end
 
       describe "#{klass}.enabled?" do
         it 'should call Calabash query method with correct parameters' do
-          $stub_query_response = [true, false]
+          @core.response = [true, false]
 
           klass.enabled?.must_equal(true)
-          $uiquery.must_equal("#{klass.class_name}")
-          $args.first.must_equal(:isEnabled)
+          @core.ui_query.must_equal("#{klass.class_name}")
+          @core.args.first.must_equal(:isEnabled)
 
           klass.enabled?(0).must_equal(true)
-          $uiquery.must_equal("#{klass.class_name} index:0")
-          $args.first.must_equal(:isEnabled)
+          @core.ui_query.must_equal("#{klass.class_name} index:0")
+          @core.args.first.must_equal(:isEnabled)
 
           klass.enabled?('myId').must_equal(true)
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
-          $args.first.must_equal(:isEnabled)
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
+          @core.args.first.must_equal(:isEnabled)
         end
       end
 
@@ -133,38 +127,38 @@ class SpecUIBase < Minitest::Spec
       describe "#{klass}.query and aliases" do
         it 'should call Calabash query method with correct parameters' do
           klass.query
-          $uiquery.must_equal("#{klass.class_name}")
+          @core.ui_query.must_equal("#{klass.class_name}")
           klass.q
-          $uiquery.must_equal("#{klass.class_name}")
+          @core.ui_query.must_equal("#{klass.class_name}")
 
           klass.query(1)
-          $uiquery.must_equal("#{klass.class_name} index:1")
+          @core.ui_query.must_equal("#{klass.class_name} index:1")
           klass.q(2)
-          $uiquery.must_equal("#{klass.class_name} index:2")
+          @core.ui_query.must_equal("#{klass.class_name} index:2")
 
           klass.query('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
           klass.q('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
         end
       end
 
       describe "#{klass}.flash and aliases" do
         it 'should call Calabash flash method with correct parameters' do
           klass.flash
-          $uiquery.must_equal("#{klass.class_name}")
+          @core.ui_query.must_equal("#{klass.class_name}")
           klass.f
-          $uiquery.must_equal("#{klass.class_name}")
+          @core.ui_query.must_equal("#{klass.class_name}")
 
           klass.flash(1)
-          $uiquery.must_equal("#{klass.class_name} index:1")
+          @core.ui_query.must_equal("#{klass.class_name} index:1")
           klass.f(2)
-          $uiquery.must_equal("#{klass.class_name} index:2")
+          @core.ui_query.must_equal("#{klass.class_name} index:2")
 
           klass.flash('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
           klass.f('myId')
-          $uiquery.must_equal("#{klass.class_name} marked:'myId'")
+          @core.ui_query.must_equal("#{klass.class_name} marked:'myId'")
         end
       end
     end

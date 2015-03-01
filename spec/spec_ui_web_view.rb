@@ -6,10 +6,6 @@ class SpecUIWebView < Minitest::Spec
     # nop
   end
 
-  after do
-    # nop
-  end
-
   describe 'UIWebView' do
     # Nothing here yet
   end

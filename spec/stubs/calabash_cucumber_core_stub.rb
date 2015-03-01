@@ -1,5 +1,3 @@
-# rubocop:disable Style/GlobalVars
-
 require 'calabash-cucumber/core'
 
 # Stub for Calabash
@@ -8,42 +6,45 @@ module Calabash
   module Cucumber
     # Stub for Core
     module Core
+      attr_accessor :ui_query
+      attr_accessor :args
+      attr_accessor :opts
+      attr_accessor :direction
+      attr_accessor :item
+      attr_accessor :section
+      attr_accessor :response
+
       def query(uiquery, *args)
-        $uiquery = uiquery
-        $args = args
-        $stub_query_response
+        self.ui_query = uiquery
+        self.args = args
+        self.response = response
       end
 
       def flash(uiquery, *args)
-        $uiquery = uiquery
-        $args = args
+        self.ui_query = uiquery
+        self.args = args
       end
 
       def scroll(uiquery, direction)
-        $uiquery = uiquery
-        $direction = direction
+        self.ui_query = uiquery
+        self.direction = direction
       end
 
       def scroll_to_collection_view_item(item, section, opts = {})
-        $item = item
-        $section = section
-        $opts = opts
+        self.item = item
+        self.section = section
+        self.opts = opts
       end
 
       def touch(uiquery, opts = {})
-        $uiquery = uiquery
-        $opts = opts
+        self.ui_query = uiquery
+        self.opts = opts
       end
 
       def double_tap(uiquery, opts = {})
-        $uiquery = uiquery
-        $opts = opts
+        self.ui_query = uiquery
+        self.opts = opts
       end
     end
   end
-end
-
-# Just for including Calabash::Cucumber::Core stub
-class CalabashCucumberCoreStubClass
-  include Calabash::Cucumber::Core
 end

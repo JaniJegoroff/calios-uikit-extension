@@ -6,10 +6,6 @@ class SpecUINavigationBar < Minitest::Spec
     # nop
   end
 
-  after do
-    # nop
-  end
-
   describe 'UINavigationBar' do
     # Nothing here yet
   end
