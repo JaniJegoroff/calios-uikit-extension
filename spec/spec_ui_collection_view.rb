@@ -30,22 +30,20 @@ class SpecUICollectionView < Minitest::Spec
       end
     end
 
-    # TODO: FixMe
+    describe 'UICollectionView.scroll_to_item' do
+      it 'should call Calabash scroll_to_collection_view_item method with correct parameters' do
+        key = :scroll_position
+        params = [[0, 0, :top], [1, 1, :bottom], [0, 1, :center]]
 
-    # describe 'UICollectionView.scroll_to_item' do
-    #   it 'should call Calabash scroll_to_collection_view_item method with correct parameters' do
-    #     key = :scroll_position
-    #     params = [[0, 0, :top], [1, 1, :bottom], [0, 1, :center]]
-    #
-    #     params.each do |(item, section, direction)|
-    #       UICollectionView.scroll_to_item(item, section, direction)
-    #       @core.item.must_equal(item)
-    #       @core.section.must_equal(section)
-    #       @core.opts.key?(key).must_equal(true)
-    #       @core.opts[key].must_equal(direction)
-    #     end
-    #   end
-    # end
+        params.each do |(item, section, direction)|
+          UICollectionView.scroll_to_item(item, section, direction)
+          UICollectionView.item.must_equal(item)
+          UICollectionView.section.must_equal(section)
+          UICollectionView.opts.key?(key).must_equal(true)
+          UICollectionView.opts[key].must_equal(direction)
+        end
+      end
+    end
 
     describe 'UICollectionView.scroll' do
       it 'should call Calabash scroll method with correct parameters' do
